@@ -1,0 +1,183 @@
+<div class="container" style="margin-top: 70px;">
+
+  <div class="row">
+
+    <div class="col-sm-8 offset-sm-2">
+
+      <div class="info-form">
+        <div class="container">
+          <form novalidate
+                (ngSubmit)="open(content)"
+                #f="ngForm">
+          
+           
+              <div class="form-group"
+                   [ngClass]="{
+                  'has-danger': partyType.invalid && (partyType.dirty || partyType.touched),
+                  'has-success': partyType.valid && (partyType.dirty || partyType.touched)
+             }">
+                <label>Party Type</label>
+                <input type="text"
+                       class="form-control"
+                       name="partyType"
+                       [(ngModel)]="model.partyType"
+                       required
+                       maxlength="255"
+                       #partyType="ngModel">
+                <div class="form-control-feedback"
+                     *ngIf="partyType.errors && (partyType.dirty || partyType.touched)">
+                  <p *ngIf="partyType.errors.required">Party Type is required</p>
+                </div>
+              </div>
+              
+              <div class="form-group"
+                   [ngClass]="{
+                  'has-danger': firstName.invalid && (firstName.dirty || firstName.touched),
+                  'has-success': firstName.valid && (firstName.dirty || firstName.touched)
+             }">
+                <label>First Name</label>
+                <input type="text"
+                       class="form-control"
+                       name="firstName"
+                       [(ngModel)]="model.firstName"
+                       required
+                       maxlength="50"
+                       #firstName="ngModel">
+                <div class="form-control-feedback"
+                     *ngIf="firstName.errors && (firstName.dirty || firstName.touched)">
+                  <p *ngIf="firstName.errors.required">First name is required</p>
+                </div>
+              </div>
+          
+              <div class="form-group"
+                 [ngClass]="{
+                  'has-danger': middleName.invalid && (middleName.dirty || middleName.touched),
+                  'has-success': middleName.valid && (middleName.dirty || middleName.touched)
+            }">
+              <label>Middle Name</label>
+              <input type="text"
+                     class="form-control"
+                     name="middleName"
+                     [(ngModel)]="model.middleName"
+                     required
+                     maxLength="50"
+                     #middleName="ngModel">
+              <div class="form-control-feedback"
+                   *ngIf="middleName.errors && (middleName.dirty || middleName.touched)">
+                <p *ngIf="middleName.errors.required">Middle Name is required</p>
+                <p *ngIf="middleName.errors.minlength">Middle Name must be at least 50 characters long</p>
+              </div>
+            </div>
+            
+              <div class="form-group"
+                   [ngClass]="{
+                  'has-danger': lastName.invalid && (lastName.dirty || lastName.touched),
+                  'has-success': lastName.valid && (lastName.dirty || lastName.touched)
+             }">
+                <label>Last Name</label>
+                <input type="text"
+                       class="form-control"
+                       name="lastName"
+                       [(ngModel)]="model.lastName"
+                       required
+                       maxlength="50"
+                       #lastName="ngModel">
+                <div class="form-control-feedback"
+                     *ngIf="lastName.errors && (lastName.dirty || lastName.touched)">
+                  <p *ngIf="lastName.errors.required">Last name is required</p>
+                </div>
+              </div>
+        <div class="form-group"
+            [ngClass]="{
+            'has-danger': displayName.invalid && (displayName.dirty || displayName.touched),
+            'has-success': displayName.valid && (displayName.dirty || displayName.touched)
+        }">
+         <label>Display Name</label>
+         <input type="text"
+                class="form-control"
+                name="displayName"
+                [(ngModel)]="model.displayName"
+                required
+                maxlength="200"
+                #displayName="ngModel">
+         <div class="form-control-feedback"
+              *ngIf="displayName.errors && (displayName.dirty || displayName.touched)">
+           <p *ngIf="displayName.errors.required">DisplayName name is required</p>
+         </div>
+       </div>
+          
+            <div class="form-group"
+                 [ngClass]="{
+                  'has-danger': generationSuffixCd.invalid && (generationSuffixCd.dirty || generationSuffixCd.touched),
+                  'has-success': generationSuffixCd.valid && (generationSuffixCd.dirty || generationSuffixCd.touched)
+             }">
+              <label>Generation Suffix Cd</label>
+              <input type="text"
+                     class="form-control"
+                     name="generationSuffixCd"
+                     [(ngModel)]="model.generationSuffixCd"
+                     required
+                     maxlength="10"
+                     #generationSuffixCd="ngModel">
+              <div class="form-control-feedback"
+                   *ngIf="generationSuffixCd.errors && (generationSuffixCd.dirty || generationSuffixCd.touched)">
+                <p *ngIf="generationSuffixCd.errors.required">Generation Suffix Cd is required</p>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="birthDate">Date of birth</label>
+              <div class="input-group">
+                <input id="birthDate" [(ngModel)]="model.birthDate" class="form-control" placeholder="yyyy-mm-dd" name="birthDate" ngbDatepicker #birthDate="ngbDatepicker">
+                <div class="input-group-append">
+                  <button class="btn btn-outline-secondary calendar" (click)="birthDate.toggle()" type="button"></button>
+                </div>
+              </div>
+            </div>
+            <div class="form-group"
+                   [ngClass]="{
+                  'has-danger': taxId.invalid && (taxId.dirty || taxId.touched),
+                  'has-success': taxId.valid && (taxId.dirty || taxId.touched)
+             }">
+                <label>Tax ID</label>
+                <input type="text"
+                       class="form-control"
+                       name="taxId"
+                       [(ngModel)]="model.taxId"
+                       required
+                       maxlength="9"
+                       #taxId="ngModel">
+                <div class="form-control-feedback"
+                     *ngIf="taxId.errors && (taxId.dirty || taxId.touched)">
+                  <p *ngIf="taxId.errors.required">Tax Id is required</p>
+                </div>
+              </div>
+          
+            <button type="submit"
+                    class="btn btn-primary"
+                    [disabled]="f.invalid">Submit
+            </button>
+          </form>
+          </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<ng-template #content let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Profile update</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <pre>{{finalFormValue | json}}</pre>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Save</button>
+  </div>
+</ng-template>
+
+
+<pre>{{ closeResult }}</pre>
